@@ -4,128 +4,552 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gizem & Fatih</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Montserrat,sans-serif;background:#f8f5f0;color:#222}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Montserrat',sans-serif;
+background:#f8f6f2;
+color:#222;
+overflow-x:hidden;
+}
+
+/* HERO */
+
 .hero{
 min-height:100vh;
-background:linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.35)),
-url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=100');
-background-size:cover;background-position:center;
-display:flex;justify-content:center;align-items:center;text-align:center;color:white;padding:20px}
-.hero-content{max-width:1000px}
-.topline{letter-spacing:6px;margin-bottom:20px}
-.names{font-family:'Cormorant Garamond',serif;font-size:7rem;text-shadow:0 5px 25px rgba(0,0,0,.6)}
-.place{color:#f3cf7a;font-weight:600;letter-spacing:4px;font-size:1.6rem}
-.date{font-size:2rem;margin:25px 0}
-.countdown{display:flex;justify-content:center;gap:15px;flex-wrap:wrap}
-.box{background:rgba(255,255,255,.12);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.4);padding:18px 28px;border-radius:16px}
-.num{font-size:3rem;font-weight:700;color:#f3cf7a}
-.music{position:fixed;right:20px;top:20px;padding:12px 20px;border-radius:30px;border:1px solid #f3cf7a;background:rgba(0,0,0,.4);color:#fff;cursor:pointer}
-.info{background:#1e140f;color:#fff;padding:40px 20px}
-.info-grid{max-width:1200px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:25px;text-align:center}
-.card h3{color:#f3cf7a;margin-bottom:10px}
-section{padding:80px 20px}
-.container{max-width:1100px;margin:auto}
-h2{font-family:'Cormorant Garamond',serif;font-size:3.2rem;text-align:center;margin-bottom:50px}
-.timeline{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px}
-.event{background:white;padding:25px;border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.08);text-align:center}
-.event .time{font-size:2rem;color:#caa85a;font-weight:700}
-.story{text-align:center;line-height:1.9;font-size:1.1rem}
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:15px}
-.gallery img{width:100%;height:280px;object-fit:cover;border-radius:16px}
-footer{background:#111;color:#fff;text-align:center;padding:60px 20px}
-@media(max-width:768px){.names{font-size:4rem}.place{font-size:1.1rem}.date{font-size:1.3rem}}
+background:
+linear-gradient(
+rgba(0,0,0,.35),
+rgba(0,0,0,.45)
+),
+url("https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=2200&q=100");
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:30px;
+color:white;
+}
+
+.hero-content{
+max-width:1000px;
+animation:fadeIn 2s ease;
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.topline{
+letter-spacing:6px;
+font-size:.9rem;
+text-transform:uppercase;
+margin-bottom:20px;
+color:#f4d58d;
+}
+
+.names{
+font-family:'Cormorant Garamond',serif;
+font-size:8rem;
+font-weight:700;
+line-height:1;
+text-shadow:
+0 5px 20px rgba(0,0,0,.4),
+0 10px 40px rgba(0,0,0,.5);
+margin-bottom:15px;
+}
+
+.place{
+font-size:1.2rem;
+letter-spacing:5px;
+color:#f4d58d;
+margin-bottom:20px;
+}
+
+.date{
+font-size:1.8rem;
+font-weight:600;
+margin-bottom:50px;
+text-shadow:0 3px 15px rgba(0,0,0,.5);
+}
+
+/* COUNTDOWN */
+
+.countdown{
+display:flex;
+justify-content:center;
+gap:18px;
+flex-wrap:wrap;
+}
+
+.count-box{
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,.3);
+padding:25px 30px;
+border-radius:20px;
+min-width:120px;
+}
+
+.count-box span{
+display:block;
+font-size:3rem;
+font-weight:700;
+color:#f4d58d;
+}
+
+/* MUSIC */
+
+#musicBtn{
+position:fixed;
+top:20px;
+right:20px;
+z-index:9999;
+border:none;
+background:rgba(255,255,255,.95);
+padding:12px 20px;
+border-radius:40px;
+cursor:pointer;
+font-weight:600;
+box-shadow:0 5px 20px rgba(0,0,0,.2);
+}
+
+/* INFO */
+
+.info{
+background:#1d140f;
+color:white;
+padding:70px 20px;
+}
+
+.info-grid{
+max-width:1200px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+}
+
+.info-card{
+text-align:center;
+padding:25px;
+}
+
+.info-card h3{
+color:#f4d58d;
+margin-bottom:15px;
+font-size:1.3rem;
+}
+
+/* SECTIONS */
+
+section{
+padding:90px 20px;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+}
+
+h2{
+font-family:'Cormorant Garamond',serif;
+font-size:3.5rem;
+text-align:center;
+margin-bottom:50px;
+color:#2d2118;
+}
+
+/* TIMELINE */
+
+.timeline{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:20px;
+}
+
+.event{
+background:white;
+padding:30px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+transition:.3s;
+}
+
+.event:hover{
+transform:translateY(-5px);
+}
+
+.time{
+font-size:2rem;
+font-weight:700;
+color:#c8a35d;
+margin-bottom:10px;
+}
+
+/* STORY */
+
+.story{
+text-align:center;
+max-width:800px;
+margin:auto;
+line-height:1.9;
+font-size:1.1rem;
+}
+
+/* GALLERY */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:18px;
+}
+
+.gallery img{
+width:100%;
+height:280px;
+object-fit:cover;
+border-radius:20px;
+transition:.4s;
+}
+
+.gallery img:hover{
+transform:scale(1.03);
+}
+
+/* BUTTON */
+
+.btn{
+display:inline-block;
+background:#c8a35d;
+color:white;
+text-decoration:none;
+padding:14px 30px;
+border-radius:40px;
+margin-top:25px;
+font-weight:600;
+}
+
+/* FOOTER */
+
+.footer{
+background:#111;
+color:white;
+text-align:center;
+padding:70px 20px;
+}
+
+.footer h2{
+color:white;
+margin-bottom:20px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.names{
+font-size:4.2rem;
+}
+
+.date{
+font-size:1.3rem;
+}
+
+.count-box{
+min-width:90px;
+padding:18px;
+}
+
+.count-box span{
+font-size:2rem;
+}
+
+h2{
+font-size:2.5rem;
+}
+
+}
+
 </style>
 </head>
 <body>
 
-<button class="music" id="musicBtn">🎵 Müziği Aç</button>
-<audio id="bgMusic"><source src="Reverie.mp3" type="audio/mpeg"></audio>
+<button id="musicBtn">🎵 Müziği Aç</button>
 
-<section class="hero">
+<audio id="bgMusic">
+<source src="Reverie.mp3" type="audio/mpeg">
+</audio>
+
+<div class="hero">
+
 <div class="hero-content">
-<div class="topline">BİRLİKTE DAİMA</div>
-<div class="names">Gizem & Fatih</div>
-<div class="place">BELUGA BEACH • MARMARİS</div>
-<div class="date">01 Ağustos 2026 Cumartesi</div>
+
+<div class="topline">
+BİRLİKTE DAİMA
+</div>
+
+<div class="names">
+Gizem & Fatih
+</div>
+
+<div class="place">
+BELUGA BEACH • MARMARİS
+</div>
+
+<div class="date">
+01 Ağustos 2026 Cumartesi
+</div>
 
 <div class="countdown">
-<div class="box"><div class="num" id="days">0</div>Gün</div>
-<div class="box"><div class="num" id="hours">0</div>Saat</div>
-<div class="box"><div class="num" id="minutes">0</div>Dakika</div>
-<div class="box"><div class="num" id="seconds">0</div>Saniye</div>
+
+<div class="count-box">
+<span id="days">0</span>
+Gün
 </div>
+
+<div class="count-box">
+<span id="hours">0</span>
+Saat
 </div>
-</section>
+
+<div class="count-box">
+<span id="minutes">0</span>
+Dakika
+</div>
+
+<div class="count-box">
+<span id="seconds">0</span>
+Saniye
+</div>
+
+</div>
+
+</div>
+
+</div>
 
 <div class="info">
+
 <div class="info-grid">
-<div class="card"><h3>Yer</h3><p>Beluga Beach<br>Marmaris / Muğla</p></div>
-<div class="card"><h3>Tarih</h3><p>01 Ağustos 2026<br>Cumartesi</p></div>
-<div class="card"><h3>Davet</h3><p>Yemekli<br>Düğün Töreni</p></div>
-<div class="card"><h3>Konum</h3><p>Beluga Beach</p></div>
+
+<div class="info-card">
+<h3>📍 Yer</h3>
+Beluga Beach<br>
+Marmaris / Muğla
 </div>
+
+<div class="info-card">
+<h3>📅 Tarih</h3>
+01 Ağustos 2026<br>
+Cumartesi
+</div>
+
+<div class="info-card">
+<h3>🍽️ Davet</h3>
+Yemekli Düğün<br>
+Töreni
+</div>
+
+<div class="info-card">
+<h3>🗺️ Konum</h3>
+
+<a
+class="btn"
+target="_blank"
+href="https://www.google.com/maps/search/?api=1&query=Beluga+Beach+Marmaris">
+
+Konumu Gör
+
+</a>
+
+</div>
+
+</div>
+
 </div>
 
 <section>
+
 <div class="container">
+
 <h2>Düğün Programı</h2>
+
 <div class="timeline">
-<div class="event"><div class="time">19:45</div><h3>Karşılama</h3></div>
-<div class="event"><div class="time">20:00</div><h3>Nikâh Töreni</h3></div>
-<div class="event"><div class="time">20:45</div><h3>Yemek</h3></div>
-<div class="event"><div class="time">21:45</div><h3>İlk Dans</h3></div>
-<div class="event"><div class="time">23:30</div><h3>Kutlama</h3></div>
+
+<div class="event">
+<div class="time">19:45</div>
+Karşılama
 </div>
+
+<div class="event">
+<div class="time">20:00</div>
+Nikâh Töreni
 </div>
+
+<div class="event">
+<div class="time">20:45</div>
+Yemek
+</div>
+
+<div class="event">
+<div class="time">21:45</div>
+İlk Dans
+</div>
+
+<div class="event">
+<div class="time">23:30</div>
+Kutlama
+</div>
+
+</div>
+
+</div>
+
 </section>
 
 <section>
+
 <div class="container">
+
 <h2>Hikayemiz</h2>
-<p class="story">Hayatımızın en özel gününde mutluluğumuzu sizlerle paylaşmak için sabırsızlanıyoruz. Yakında burada birlikte fotoğraflarımız yer alacak.</p>
+
+<p class="story">
+
+Hayatımızın en özel gününde mutluluğumuzu sizlerle paylaşmak için sabırsızlanıyoruz.
+
+Bu sayfa zamanla anılarımız ve fotoğraflarımızla dolacak.
+
+</p>
+
 </div>
+
 </section>
 
 <section>
+
 <div class="container">
+
 <h2>Galeri</h2>
+
 <div class="gallery">
+
 <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=80">
+
 <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80">
+
 <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1200&q=80">
+
 <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1200&q=80">
+
 </div>
+
 </div>
+
 </section>
 
-<footer>
+<div class="footer">
+
 <h2>Gizem & Fatih ❤️</h2>
-<p>Sizinle birlikte kutlamak için sabırsızlanıyoruz.</p>
-</footer>
+
+<p>
+Sizinle birlikte kutlamak için sabırsızlanıyoruz.
+</p>
+
+</div>
 
 <script>
-const targetDate=new Date("2026-08-01T19:45:00");
-function update(){
-const diff=targetDate-new Date();
-if(diff<0)return;
-days.innerText=Math.floor(diff/86400000);
-hours.innerText=Math.floor((diff%86400000)/3600000);
-minutes.innerText=Math.floor((diff%3600000)/60000);
-seconds.innerText=Math.floor((diff%60000)/1000);
-}
-update();setInterval(update,1000);
 
-const music=document.getElementById('bgMusic');
-const btn=document.getElementById('musicBtn');
-let p=false;
-btn.onclick=async()=>{
-if(!p){await music.play();btn.innerText='⏸ Müziği Durdur';}
-else{music.pause();btn.innerText='🎵 Müziği Aç';}
-p=!p;
-};
+const targetDate = new Date("2026-08-01T19:45:00");
+
+function updateCountdown(){
+
+const now = new Date();
+const diff = targetDate - now;
+
+if(diff <= 0) return;
+
+document.getElementById("days").innerText =
+Math.floor(diff/(1000*60*60*24));
+
+document.getElementById("hours").innerText =
+Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+
+document.getElementById("minutes").innerText =
+Math.floor((diff%(1000*60*60))/(1000*60));
+
+document.getElementById("seconds").innerText =
+Math.floor((diff%(1000*60))/1000);
+
+}
+
+updateCountdown();
+setInterval(updateCountdown,1000);
+
+const music = document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicBtn");
+
+let playing = false;
+
+musicBtn.addEventListener("click", async () => {
+
+try{
+
+if(!playing){
+
+await music.play();
+
+musicBtn.innerText =
+"⏸ Müziği Durdur";
+
+playing = true;
+
+}else{
+
+music.pause();
+
+musicBtn.innerText =
+"🎵 Müziği Aç";
+
+playing = false;
+
+}
+
+}catch(e){
+
+alert("Reverie.mp3 bulunamadı");
+
+}
+
+});
+
 </script>
+
 </body>
 </html>
