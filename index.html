@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Cinzel:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 
@@ -74,16 +74,19 @@ color:#f4d58d;
 }
 
 .names{
-font-family:'Great Vibes',cursive;
-font-size:7rem;
-font-weight:400;
+font-family:'Cormorant Garamond',serif;
+font-size:7.8rem;
+font-weight:700;
+letter-spacing:5px;
 line-height:1.1;
 margin-bottom:15px;
 white-space:nowrap;
 color:white;
 text-shadow:
-0 4px 15px rgba(0,0,0,.4),
-0 8px 35px rgba(0,0,0,.5);
+0 1px 0 rgba(255,255,255,.4),
+0 2px 0 rgba(255,255,255,.15),
+0 12px 35px rgba(0,0,0,.55),
+0 30px 70px rgba(0,0,0,.45);
 }
 
 .place{
@@ -172,6 +175,25 @@ font-size:1.3rem;
 
 section{
 padding:90px 20px;
+position:relative;
+overflow:hidden;
+background:
+linear-gradient(
+rgba(248,246,242,.55),
+rgba(248,246,242,.55)
+),
+url("https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=2200&q=100");
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+}
+
+section::before{
+content:"";
+position:absolute;
+inset:0;
+background:radial-gradient(circle at top center, rgba(200,163,93,.10), transparent 45%);
+pointer-events:none;
 }
 
 .container{
@@ -180,8 +202,10 @@ margin:auto;
 }
 
 h2{
-font-family:'Cormorant Garamond',serif;
-font-size:3.5rem;
+font-family:'Cinzel', serif;
+font-size:3.7rem;
+font-weight:700;
+letter-spacing:2px;
 text-align:center;
 margin-bottom:50px;
 color:#2d2118;
@@ -196,11 +220,13 @@ gap:20px;
 }
 
 .event{
-background:white;
+background:rgba(255,255,255,.88);
+backdrop-filter:blur(12px);
 padding:30px;
-border-radius:20px;
+border-radius:24px;
 text-align:center;
-box-shadow:0 10px 25px rgba(0,0,0,.08);
+border:1px solid rgba(200,163,93,.18);
+box-shadow:0 15px 35px rgba(0,0,0,.08);
 transition:.3s;
 }
 
@@ -218,11 +244,14 @@ margin-bottom:10px;
 /* STORY */
 
 .story{
+font-family:'Cormorant Garamond',serif;
 text-align:center;
-max-width:800px;
+max-width:850px;
 margin:auto;
-line-height:1.9;
-font-size:1.1rem;
+line-height:2;
+font-size:1.45rem;
+font-weight:500;
+color:#4a3c32;
 }
 
 /* GALLERY */
@@ -237,7 +266,8 @@ gap:18px;
 width:100%;
 height:280px;
 object-fit:cover;
-border-radius:20px;
+border-radius:24px;
+box-shadow:0 15px 35px rgba(0,0,0,.12);
 transition:.4s;
 }
 
@@ -270,6 +300,9 @@ padding:70px 20px;
 .footer h2{
 color:white;
 margin-bottom:20px;
+font-family:'Cormorant Garamond',serif;
+font-size:3.5rem;
+letter-spacing:2px;
 }
 
 /* MOBILE */
@@ -407,7 +440,7 @@ Konumu Gör
 <div class="timeline">
 
 <div class="event">
-<div class="time">19:45</div>
+<div class="time">19:30</div>
 Karşılama
 </div>
 
@@ -417,18 +450,13 @@ Nikâh Töreni
 </div>
 
 <div class="event">
-<div class="time">20:45</div>
-Yemek
-</div>
-
-<div class="event">
-<div class="time">21:45</div>
-İlk Dans
+<div class="time">20:30</div>
+Yemek İkramı
 </div>
 
 <div class="event">
 <div class="time">23:30</div>
-Kutlama
+Kapanış
 </div>
 
 </div>
@@ -445,9 +473,23 @@ Kutlama
 
 <p class="story">
 
-Hayatımızın en özel gününde mutluluğumuzu sizlerle paylaşmak için sabırsızlanıyoruz.
+Bir gün yollarımız kesişti, sonra hayallerimiz...
 
-Bu sayfa zamanla anılarımız ve fotoğraflarımızla dolacak.
+<br><br>
+
+Bugün ise aynı geleceğe yürüyoruz.
+
+<br><br>
+
+Bu özel yolculuğun en güzel anını, siz sevdiklerimizle paylaşacak olmanın heyecanı içindeyiz.
+
+<br><br>
+
+Anımıza tanıklık etmeniz bizim için çok kıymetli.
+
+<br><br>
+
+<em>İyi ki bu hikâyenin bir parçasısınız..</em>
 
 </p>
 
@@ -479,17 +521,17 @@ Bu sayfa zamanla anılarımız ve fotoğraflarımızla dolacak.
 
 <div class="footer">
 
-<h2>Gizem & Fatih ❤️</h2>
+<h2>Gizem & Fatih ♥</h2>
 
 <p>
-Sizinle birlikte kutlamak için sabırsızlanıyoruz.
+Sizinle birlikte kutlamak için sabırsızlanıyoruz..
 </p>
 
 </div>
 
 <script>
 
-const targetDate = new Date("2026-08-01T19:45:00");
+const targetDate = new Date("2026-08-01T19:30:00");
 
 function updateCountdown(){
 
