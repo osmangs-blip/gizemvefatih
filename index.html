@@ -258,7 +258,7 @@ color:#4a3c32;
 
 .gallery{
 display:grid;
-grid-template-columns:repeat(5,1fr);
+grid-template-columns:repeat(6,1fr);
 gap:18px;
 }
 
@@ -301,8 +301,9 @@ padding:70px 20px;
 color:white;
 margin-bottom:20px;
 font-family:'Cormorant Garamond',serif;
-font-size:3.5rem;
+font-size:3.2rem;
 letter-spacing:2px;
+white-space:nowrap;
 }
 
 /* MOBILE */
@@ -329,6 +330,15 @@ font-size:2rem;
 
 h2{
 font-size:2.5rem;
+}
+
+.gallery{
+grid-template-columns:repeat(2,1fr);
+}
+
+.footer h2{
+font-size:2.4rem;
+white-space:nowrap;
 }
 
 }
@@ -403,7 +413,7 @@ BELUGA BEACH • MARMARİS
 </div>
 
 <div class="date">
-01 Ağustos 2026 Cumartesi
+01 Ağustos 2026<br>19.00
 </div>
 
 <div class="countdown">
@@ -448,6 +458,11 @@ Marmaris / Muğla
 <h3>📅 Tarih</h3>
 01 Ağustos 2026<br>
 Cumartesi
+</div>
+
+<div class="info-card">
+<h3>🕒 Saat</h3>
+19.00
 </div>
 
 <div class="info-card">
@@ -553,6 +568,7 @@ Anımıza tanıklık etmeniz bizim için çok kıymetli.
 <img src="galeri3.jpg" onclick="openImage(this.src)">
 <img src="galeri4.jpg" onclick="openImage(this.src)">
 <img src="galeri5.jpg" onclick="openImage(this.src)">
+<img src="galeri6.jpg" onclick="openImage(this.src)">
 
 </div>
 
@@ -650,7 +666,8 @@ const images = [
 'galeri2.jpg',
 'galeri3.jpg',
 'galeri4.jpg',
-'galeri5.jpg'
+'galeri5.jpg',
+'galeri6.jpg'
 ];
 
 function openImage(src){
