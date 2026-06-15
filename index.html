@@ -349,6 +349,33 @@ max-width:90%;
 max-height:90%;
 border-radius:20px;
 }
+
+.lightbox-close{
+position:absolute;
+top:20px;
+right:30px;
+font-size:56px;
+color:#fff;
+cursor:pointer;
+z-index:100001;
+line-height:1;
+}
+
+.lightbox-nav{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+font-size:72px;
+color:#fff;
+cursor:pointer;
+z-index:100001;
+padding:20px;
+font-weight:bold;
+}
+
+.lightbox-prev{left:20px;}
+.lightbox-next{right:20px;}
+
 </style>
 </head>
 <body>
@@ -529,8 +556,11 @@ Anımıza tanıklık etmeniz bizim için çok kıymetli.
 
 </div>
 
-<div id="lightbox" class="lightbox" onclick="closeImage()">
+<div id="lightbox" class="lightbox">
+<span class="lightbox-close" onclick="closeImage()">×</span>
+<span class="lightbox-nav lightbox-prev" onclick="prevImage()">❮</span>
 <img id="lightbox-img">
+<span class="lightbox-nav lightbox-next" onclick="nextImage()">❯</span>
 </div>
 
 </div>
@@ -628,16 +658,19 @@ currentImage = images.indexOf(src);
 document.getElementById('lightbox').style.display='flex';
 document.getElementById('lightbox-img').src=src;
 }
+
 function closeImage(){
 document.getElementById('lightbox').style.display='none';
 }
+
 function nextImage(){
-currentImage=(currentImage+1)%images.length;
-document.getElementById('lightbox-img').src=images[currentImage];
+currentImage = (currentImage + 1) % images.length;
+document.getElementById('lightbox-img').src = images[currentImage];
 }
+
 function prevImage(){
-currentImage=(currentImage-1+images.length)%images.length;
-document.getElementById('lightbox-img').src=images[currentImage];
+currentImage = (currentImage - 1 + images.length) % images.length;
+document.getElementById('lightbox-img').src = images[currentImage];
 }
 </script>
 
