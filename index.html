@@ -258,7 +258,7 @@ color:#4a3c32;
 
 .gallery{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(5,1fr);
 gap:18px;
 }
 
@@ -333,6 +333,22 @@ font-size:2.5rem;
 
 }
 
+
+.lightbox{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.92);
+z-index:99999;
+justify-content:center;
+align-items:center;
+cursor:pointer;
+}
+.lightbox img{
+max-width:90%;
+max-height:90%;
+border-radius:20px;
+}
 </style>
 </head>
 <body>
@@ -505,14 +521,16 @@ Anımıza tanıklık etmeniz bizim için çok kıymetli.
 
 <div class="gallery">
 
-<img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=80">
+<img src="1(2).jpg" onclick="openImage(this.src)">
+<img src="2(1).jpg" onclick="openImage(this.src)">
+<img src="3(1).jpg" onclick="openImage(this.src)">
+<img src="4(1).jpg" onclick="openImage(this.src)">
+<img src="5(4).jpg" onclick="openImage(this.src)">
 
-<img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80">
+</div>
 
-<img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1200&q=80">
-
-<img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1200&q=80">
-
+<div id="lightbox" class="lightbox" onclick="closeImage()">
+<img id="lightbox-img">
 </div>
 
 </div>
@@ -594,6 +612,14 @@ alert("Reverie.mp3 bulunamadı");
 
 });
 
+
+function openImage(src){
+document.getElementById('lightbox').style.display='flex';
+document.getElementById('lightbox-img').src=src;
+}
+function closeImage(){
+document.getElementById('lightbox').style.display='none';
+}
 </script>
 
 </body>
