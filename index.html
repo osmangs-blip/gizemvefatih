@@ -349,32 +349,6 @@ max-width:90%;
 max-height:90%;
 border-radius:20px;
 }
-
-.lightbox-close{
-position:absolute;
-top:25px;
-right:35px;
-font-size:48px;
-color:white;
-cursor:pointer;
-font-weight:300;
-z-index:100000;
-}
-
-.lightbox-nav{
-position:absolute;
-top:50%;
-transform:translateY(-50%);
-font-size:60px;
-color:white;
-cursor:pointer;
-padding:20px;
-user-select:none;
-z-index:100000;
-}
-
-.lightbox-prev{left:20px;}
-.lightbox-next{right:20px;}
 </style>
 </head>
 <body>
@@ -555,15 +529,8 @@ Anımıza tanıklık etmeniz bizim için çok kıymetli.
 
 </div>
 
-<div id="lightbox" class="lightbox">
-
-<span class="lightbox-close" onclick="closeImage()">×</span>
-<span class="lightbox-nav lightbox-prev" onclick="prevImage()">❮</span>
-
+<div id="lightbox" class="lightbox" onclick="closeImage()">
 <img id="lightbox-img">
-
-<span class="lightbox-nav lightbox-next" onclick="nextImage()">❯</span>
-
 </div>
 
 </div>
@@ -649,11 +616,11 @@ alert("Reverie.mp3 bulunamadı");
 let currentImage = 0;
 
 const images = [
-"galeri1.jpg",
-"galeri2.jpg",
-"galeri3.jpg",
-"galeri4.jpg",
-"galeri5.jpg"
+"1(2).jpg",
+"2(1).jpg",
+"3(1).jpg",
+"4(1).jpg",
+"5(4).jpg"
 ];
 
 function openImage(src){
@@ -661,19 +628,16 @@ currentImage = images.indexOf(src);
 document.getElementById('lightbox').style.display='flex';
 document.getElementById('lightbox-img').src=src;
 }
-
 function closeImage(){
 document.getElementById('lightbox').style.display='none';
 }
-
 function nextImage(){
-currentImage = (currentImage + 1) % images.length;
-document.getElementById('lightbox-img').src = images[currentImage];
+currentImage=(currentImage+1)%images.length;
+document.getElementById('lightbox-img').src=images[currentImage];
 }
-
 function prevImage(){
-currentImage = (currentImage - 1 + images.length) % images.length;
-document.getElementById('lightbox-img').src = images[currentImage];
+currentImage=(currentImage-1+images.length)%images.length;
+document.getElementById('lightbox-img').src=images[currentImage];
 }
 </script>
 
