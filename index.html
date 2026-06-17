@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gizem & Fatih</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Cinzel:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+.rsvp-options{
+display:flex;
+justify-content:center;
+gap:30px;
+margin-bottom:15px;
+}
+
+@media(max-width:768px){
+.rsvp-options{
+flex-direction:column;
+align-items:flex-start;
+gap:12px;
+}
+}
+
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Montserrat',sans-serif;
+background:#f8f6f2;
+color:#222;
+overflow-x:hidden;
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+background:
+linear-gradient(
+rgba(0,0,0,.35),
+rgba(0,0,0,.45)
+),
+url("https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=2200&q=100");
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:30px;
+color:white;
+}
+
+.hero-content{
+max-width:1000px;
+animation:fadeIn 2s ease;
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.topline{
+letter-spacing:6px;
+font-size:.9rem;
+text-transform:uppercase;
+margin-bottom:20px;
+color:#f4d58d;
+}
+
+.names{
+font-family:'Cormorant Garamond',serif;
+font-size:7.8rem;
+font-weight:700;
+letter-spacing:5px;
+line-height:1.1;
+margin-bottom:15px;
+white-space:nowrap;
+color:white;
+text-shadow:
+0 1px 0 rgba(255,255,255,.4),
+0 2px 0 rgba(255,255,255,.15),
+0 12px 35px rgba(0,0,0,.55),
+0 30px 70px rgba(0,0,0,.45);
+}
+
+.place{
+font-size:1.2rem;
+letter-spacing:5px;
+color:#f4d58d;
+margin-bottom:20px;
+}
+
+.date{
+font-size:1.8rem;
+font-weight:600;
+margin-bottom:50px;
+text-shadow:0 3px 15px rgba(0,0,0,.5);
+}
+
+/* COUNTDOWN */
+
+.countdown{
+display:flex;
+justify-content:center;
+gap:18px;
+flex-wrap:wrap;
+}
+
+.count-box{
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,.3);
+padding:25px 30px;
+border-radius:20px;
+min-width:120px;
+}
+
+.count-box span{
+display:block;
+font-size:3rem;
+font-weight:700;
+color:#f4d58d;
+}
+
+/* MUSIC */
+
+#musicBtn{
+position:fixed;
+top:20px;
+right:20px;
+z-index:9999;
+border:none;
+background:rgba(255,255,255,.95);
+padding:10px 16px;
+border-radius:40px;
+cursor:pointer;
+font-weight:600;
+box-shadow:0 5px 20px rgba(0,0,0,.2);
+}
+
+/* INFO */
+
+.info{
+background:#1d140f;
+color:white;
+padding:45px 20px;
+}
+
+.info-grid{
+max-width:1200px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+}
+
+.info-card{
+text-align:center;
+padding:25px;
+}
+
+.info-card h3{
+color:#f4d58d;
+margin-bottom:15px;
+font-size:1.3rem;
+}
+
+/* SECTIONS */
+
+section{
+padding:90px 20px;
+position:relative;
+overflow:hidden;
+background:
+linear-gradient(
+rgba(248,246,242,.55),
+rgba(248,246,242,.55)
+),
+url("https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=2200&q=100");
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+}
+
+section::before{
+content:"";
+position:absolute;
+inset:0;
+background:radial-gradient(circle at top center, rgba(200,163,93,.10), transparent 45%);
+pointer-events:none;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+}
+
+.container.timeline-wide{
+max-width:1400px;
+}
+
+h2{
+font-family:'Cinzel', serif;
+font-size:3.7rem;
+font-weight:700;
+letter-spacing:2px;
+text-align:center;
+margin-bottom:50px;
+color:#2d2118;
+}
+
+/* TIMELINE */
+
+.timeline{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:24px;
+}
+
+.event{
+background:rgba(255,255,255,.88);
+backdrop-filter:blur(12px);
+padding:30px;
+border-radius:24px;
+text-align:center;
+border:1px solid rgba(200,163,93,.18);
+box-shadow:0 15px 35px rgba(0,0,0,.08);
+transition:.3s;
+}
+
+.event:hover{
+transform:translateY(-5px);
+}
+
+.ornament{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+color:#c8a35d;
+}
+
+.ornament .dash{
+height:1px;
+width:60px;
+background:#c8a35d;
+}
+
+.ornament .diamond{
+font-size:1rem;
+line-height:1;
+}
+
+.ornament.title{
+margin:-35px auto 40px;
+}
+
+.ornament.small{
+gap:6px;
+margin:8px 0 10px;
+font-size:.7rem;
+}
+
+.ornament.small .dash{
+width:22px;
+}
+
+.time{
+font-size:2rem;
+font-weight:700;
+color:#c8a35d;
+margin-bottom:10px;
+}
+
+/* STORY */
+
+.story{
+font-family:'Cormorant Garamond',serif;
+text-align:center;
+max-width:850px;
+margin:auto;
+line-height:2;
+font-size:1.45rem;
+font-weight:500;
+color:#4a3c32;
+}
+
+/* GALLERY */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(6,1fr);
+gap:18px;
+}
+
+.gallery img{
+width:100%;
+height:280px;
+object-fit:cover;
+border-radius:24px;
+box-shadow:0 15px 35px rgba(0,0,0,.12);
+transition:.4s;
+}
+
+.gallery img:hover{
+transform:scale(1.03);
+}
+
+/* BUTTON */
+
+.btn{
+display:inline-block;
+background:#c8a35d;
+color:white;
+text-decoration:none;
+padding:14px 30px;
+border-radius:40px;
+margin-top:25px;
+font-weight:600;
+}
+
+/* FOOTER */
+
+.footer{
+background:#111;
+color:white;
+text-align:center;
+padding:70px 20px;
+}
+
+.footer h2{
+color:white;
+margin-bottom:20px;
+font-family:'Cormorant Garamond',serif;
+font-size:3.2rem;
+letter-spacing:2px;
+white-space:nowrap;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.names{
+font-size:3rem;
+white-space: nowrap;
+}
+
+.date{
+font-size:1.3rem;
+}
+
+.count-box{
+min-width:90px;
+padding:18px;
+}
+
+.count-box span{
+font-size:2rem;
+}
+
+h2{
+font-size:2.5rem;
+}
+
+.gallery{
+grid-template-columns:repeat(2,1fr);
+}
+
+.timeline{
+grid-template-columns:1fr 1fr;
+gap:18px;
+max-width:420px;
+margin:0 auto;
+}
+
+.event{
+width:100%;
+min-width:0;
+}
+
+.footer h2{
+font-size:2.4rem;
+white-space:nowrap;
+}
+
+}
+
+
+.lightbox{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.92);
+z-index:99999;
+justify-content:center;
+align-items:center;
+cursor:pointer;
+}
+.lightbox img{
+max-width:90%;
+max-height:90%;
+border-radius:20px;
+}
+
+.lightbox-close{
+position:absolute;
+top:20px;
+right:30px;
+font-size:56px;
+color:white;
+cursor:pointer;
+z-index:100001;
+line-height:1;
+}
+
+.lightbox-nav{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+font-size:72px;
+color:white;
+cursor:pointer;
+padding:20px;
+user-select:none;
+z-index:100001;
+}
+
+.lightbox-prev{left:20px;}
+.lightbox-next{right:20px;}
+
+
+#musicBtn{
+right:20px !important;
+padding:5px 10px !important;
+font-size:.65rem !important;
+}
+
+#viewBtn{
+left:20px !important;
+padding:5px 10px !important;
+font-size:.65rem !important;
+}
+</style>
+</head>
+<body>
+
+<button id="viewBtn" style="position:fixed;top:20px;left:20px;z-index:9999;border:none;background:rgba(255,255,255,.95);padding:10px 16px;border-radius:40px;cursor:pointer;font-weight:600;box-shadow:0 5px 20px rgba(0,0,0,.2);">🖥️ Masaüstü</button>
+
+<button id="musicBtn">🎵 Müziği Aç</button>
+
+<audio id="bgMusic" autoplay loop>
+<source src="Reverie.mp3" type="audio/mpeg">
+</audio>
+
+<div class="hero">
+
+<div class="hero-content">
+
+<div class="topline">
+BİRLİKTE DAİMA
+</div>
+
+<div class="names">
+Gizem & Fatih
+</div>
+
+<div class="place">
+BELUGA BEACH • MARMARİS
+</div>
+
+<div class="date">
+01 Ağustos 2026<br>19.00
+</div>
+
+<div class="countdown">
+
+<div class="count-box">
+<span id="days">0</span>
+Gün
+</div>
+
+<div class="count-box">
+<span id="hours">0</span>
+Saat
+</div>
+
+<div class="count-box">
+<span id="minutes">0</span>
+Dakika
+</div>
+
+<div class="count-box">
+<span id="seconds">0</span>
+Saniye
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="info">
+
+<div class="info-grid">
+
+<div class="info-card">
+<h3>📍 Yer</h3>
+Beluga Beach<br>
+Marmaris / Muğla
+</div>
+
+<div class="info-card">
+<h3>📅 Tarih</h3>
+01 Ağustos 2026<br>
+Cumartesi
+</div>
+
+<div class="info-card">
+<h3>🕒 Saat</h3>
+19.00
+</div>
+
+<div class="info-card">
+<h3>🍽️ Davet</h3>
+Yemekli Düğün<br>
+Töreni
+</div>
+
+<div class="info-card">
+<h3>🗺️ Konum</h3>
+
+<a
+class="btn"
+target="_blank"
+href="https://www.google.com/maps/search/?api=1&query=Beluga+Beach+Marmaris">
+
+Konumu Gör
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<section>
+
+<div class="container timeline-wide">
+
+<h2>Düğün Programı</h2>
+
+<div class="ornament title"><span class="dash"></span><span class="diamond">✦</span><span class="dash"></span></div>
+
+<div class="timeline">
+
+<div class="event"><div class="time">19:00</div><div class="ornament small"><span class="dash"></span><span class="diamond">✦</span><span class="dash"></span></div>Misafir Karşılama</div>
+<div class="event"><div class="time">20:00</div><div class="ornament small"><span class="dash"></span><span class="diamond">✦</span><span class="dash"></span></div>Nikâh Töreni</div>
+<div class="event"><div class="time">20:30</div><div class="ornament small"><span class="dash"></span><span class="diamond">✦</span><span class="dash"></span></div>İlk Dans</div>
+<div class="event"><div class="time">21:30</div><div class="ornament small"><span class="dash"></span><span class="diamond">✦</span><span class="dash"></span></div>Düğün Pastası</div>
+<div class="event"><div class="time">22:00</div><div class="ornament small"><span class="dash"></span><span class="diamond">✦</span><span class="dash"></span></div>Takı Töreni</div>
+<div class="event"><div class="time">23:00</div><div class="ornament small"><span class="dash"></span><span class="diamond">✦</span><span class="dash"></span></div>Kına Merasimi</div>
+
+</div>
+
+</div>
+
+
+</section>
+
+<section>
+
+<div class="container">
+
+<h2 style="font-size:2.9rem;color:#3f3329;">Katılım Durumu</h2>
+
+<p class="story" style="color:#3f3329;">
+
+Katılım durumunuzu ve bizimle birlikte olacak kişi sayısını bildirmeniz, sizleri en güzel şekilde ağırlayabilmemiz için bizlere yardımcı olacaktır.
+
+<br><br>
+
+Bu anlamlı günümüzde yanımızda olmanız, mutluluğumuzu daha da güzelleştirecek.
+
+<br><br>
+
+<strong>Sevgiyle:</strong><br><br><strong>Gizem &amp; Fatih</strong>
+
+</p>
+
+<div style="max-width:600px;margin:40px auto;text-align:center;background:rgba(255,255,255,.88);padding:30px;border-radius:24px;">
+
+<input
+id="adsoyad"
+type="text"
+placeholder="Ad Soyad"
+style="width:100%;max-width:420px;padding:12px;border:1px solid #ddd;border-radius:12px;margin-bottom:20px;">
+
+<div class="rsvp-options">
+
+<label>
+<input type="radio" name="katilim" value="Katılıyorum"
+onclick="document.getElementById('kisiWrap').style.display='block'">
+Katılıyorum ❤️
+</label>
+
+<label>
+<input type="radio" name="katilim" value="Katılamıyorum"
+onclick="document.getElementById('kisiWrap').style.display='none'">
+Katılamıyorum
+</label>
+
+</div>
+
+<div id="kisiWrap" style="display:none;margin-top:20px;">
+
+<p><strong>Kaç kişi katılacaksınız?</strong></p>
+
+<select id="kisi" style="padding:10px 15px;border-radius:12px;">
+
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+<option>6</option>
+<option>7+</option>
+
+</select>
+
+</div>
+
+<br>
+
+<button
+id="rsvpBtn"
+onclick="gonderRSVP()"
+style="background:#c8a35d;color:white;border:none;padding:14px 34px;border-radius:40px;cursor:pointer;font-weight:600;">
+
+❤️ Katılımı Gönder
+
+</button>
+
+<div id="sonuc" style="margin-top:20px;font-weight:600;color:#2d6a4f;"></div>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<h2>Hikâyemiz</h2>
+
+
+<p class="story">
+
+Bir gün yollarımız kesişti, sonra hayallerimiz...
+
+<br><br>
+
+Bugün ise aynı geleceğe yürüyoruz.
+
+<br><br>
+
+Bu özel yolculuğun en güzel anını, siz sevdiklerimizle paylaşacak olmanın heyecanı içindeyiz.
+
+<br><br>
+
+Anımıza tanıklık etmeniz bizim için çok kıymetli.
+
+<br><br>
+
+<em>İyi ki bu hikâyenin bir parçasısınız..</em>
+
+</p>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<h2>Galeri</h2>
+
+<div class="gallery">
+
+<img src="galeri1.jpg" onclick="openImage(this.src)">
+<img src="galeri2.jpg" onclick="openImage(this.src)">
+<img src="galeri3.jpg" onclick="openImage(this.src)">
+<img src="galeri4.jpg" onclick="openImage(this.src)">
+<img src="galeri5.jpg" onclick="openImage(this.src)">
+<img src="galeri6.jpg" onclick="openImage(this.src)">
+
+</div>
+
+<div id="lightbox" class="lightbox">
+<span class="lightbox-close" onclick="closeImage()">×</span>
+<span class="lightbox-nav lightbox-prev" onclick="event.stopPropagation();prevImage()">❮</span>
+<img id="lightbox-img">
+<span class="lightbox-nav lightbox-next" onclick="event.stopPropagation();nextImage()">❯</span>
+</div>
+
+</div>
+
+</section>
+
+<div class="footer">
+
+<h2>Gizem & Fatih<br>♥</h2>
+
+<p>
+Sizinle birlikte kutlamak için sabırsızlanıyoruz..
+</p>
+
+</div>
+
+<script>
+
+const targetDate = new Date("2026-08-01T19:30:00");
+
+function updateCountdown(){
+
+const now = new Date();
+const diff = targetDate - now;
+
+if(diff <= 0) return;
+
+document.getElementById("days").innerText =
+Math.floor(diff/(1000*60*60*24));
+
+document.getElementById("hours").innerText =
+Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+
+document.getElementById("minutes").innerText =
+Math.floor((diff%(1000*60*60))/(1000*60));
+
+document.getElementById("seconds").innerText =
+Math.floor((diff%(1000*60))/1000);
+
+}
+
+updateCountdown();
+setInterval(updateCountdown,1000);
+
+const music = document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicBtn");
+
+let playing = false;
+
+window.addEventListener("load", async ()=>{
+try{
+await music.play();
+musicBtn.innerText="⏸ Müziği Durdur";
+playing=true;
+}catch(e){
+console.log("Tarayıcı otomatik oynatmayı engelledi.");
+}
+});
+
+musicBtn.addEventListener("click", async () => {
+
+try{
+
+if(!playing){
+
+await music.play();
+
+musicBtn.innerText =
+"⏸ Müziği Durdur";
+
+playing = true;
+
+}else{
+
+music.pause();
+
+musicBtn.innerText =
+"🎵 Müziği Aç";
+
+playing = false;
+
+}
+
+}catch(e){
+
+alert("Reverie.mp3 bulunamadı");
+
+}
+
+});
+
+
+let currentImage = 0;
+
+const images = [
+'galeri1.jpg',
+'galeri2.jpg',
+'galeri3.jpg',
+'galeri4.jpg',
+'galeri5.jpg',
+'galeri6.jpg'
+];
+
+function openImage(src){
+currentImage = images.findIndex(img => src.includes(img));
+document.getElementById('lightbox').style.display='flex';
+document.getElementById('lightbox-img').src=src;
+}
+
+function closeImage(){
+document.getElementById('lightbox').style.display='none';
+}
+
+function nextImage(){
+currentImage = (currentImage + 1) % images.length;
+document.getElementById('lightbox-img').src = images[currentImage];
+}
+
+function prevImage(){
+currentImage = (currentImage - 1 + images.length) % images.length;
+document.getElementById('lightbox-img').src = images[currentImage];
+}
+
+const viewBtn=document.getElementById("viewBtn");
+let desktopMode=false;
+
+viewBtn?.addEventListener("click",()=>{
+desktopMode=!desktopMode;
+
+let vp=document.querySelector('meta[name="viewport"]');
+
+if(desktopMode){
+vp.setAttribute("content","width=1400");
+viewBtn.innerText="📱 Mobil";
+}else{
+vp.setAttribute("content","width=device-width, initial-scale=1.0");
+viewBtn.innerText="🖥️ Masaüstü";
+}
+});
+
+let rsvpGonderiliyor = false;
+
+async function gonderRSVP(){
+
+const adsoyad =
+document.getElementById("adsoyad").value.trim();
+
+const katilim =
+document.querySelector('input[name="katilim"]:checked')?.value;
+
+const kisi =
+document.getElementById("kisi").value;
+
+if(!adsoyad || !katilim){
+
+alert("Lütfen tüm bilgileri doldurun.");
+
+return;
+
+}
+
+if(rsvpGonderiliyor){
+
+return;
+
+}
+
+rsvpGonderiliyor = true;
+
+const rsvpBtn = document.getElementById("rsvpBtn");
+
+if(rsvpBtn){
+
+rsvpBtn.disabled = true;
+
+rsvpBtn.style.opacity = "0.6";
+
+rsvpBtn.style.cursor = "not-allowed";
+
+}
+
+document.getElementById("sonuc").innerHTML =
+"❤️ Katılımınız alınmıştır. Teşekkür ederiz.";
+
+try{
+
+await fetch(
+"https://script.google.com/macros/s/AKfycbz9n5J3VHDKGGtfhM4iBOn8r3Ah2JmN7ag6JDaRJbm2pmTgqPlGdZiEQ1X90ZrwRVZ0WA/exec",
+{
+method:"POST",
+mode:"no-cors",
+body:JSON.stringify({
+adsoyad,
+katilim,
+kisi
+})
+}
+);
+
+}catch(error){
+
+console.error(error);
+
+}
+
+}  
+</script>
+
+</body>
+</html>
