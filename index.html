@@ -149,7 +149,7 @@ box-shadow:0 5px 20px rgba(0,0,0,.2);
 .info{
 background:#1d140f;
 color:white;
-padding:70px 20px;
+padding:45px 20px;
 }
 
 .info-grid{
@@ -215,7 +215,7 @@ color:#2d2118;
 
 .timeline{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+grid-template-columns:repeat(6,1fr);
 gap:20px;
 }
 
@@ -333,6 +333,10 @@ font-size:2.5rem;
 }
 
 .gallery{
+grid-template-columns:repeat(2,1fr);
+}
+
+.timeline{
 grid-template-columns:repeat(2,1fr);
 }
 
@@ -511,24 +515,64 @@ Konumu Gör
 
 <div class="timeline">
 
-<div class="event">
-<div class="time">19:30</div>
-Karşılama
+<div class="event"><div class="time">19:00</div>Misafir Karşılama</div>
+<div class="event"><div class="time">20:00</div>Nikâh<br>(Fotoğraf Çekimi)</div>
+<div class="event"><div class="time">20:30</div>Gelin &amp; Damat Giriş</div>
+<div class="event"><div class="time">21:30</div>Pasta</div>
+<div class="event"><div class="time">22:00</div>Takı</div>
+<div class="event"><div class="time">23:00</div>Kına Merasimi</div>
+
 </div>
 
-<div class="event">
-<div class="time">20:00</div>
-Nikâh Töreni
 </div>
 
-<div class="event">
-<div class="time">20:30</div>
-Yemek İkramı
-</div>
 
-<div class="event">
-<div class="time">23:30</div>
-Kapanış
+</section>
+
+<section>
+
+<div class="container">
+
+<h2 style="font-size:2.9rem;color:#3f3329;">Katılım Durumu</h2>
+
+<p class="story" style="color:#3f3329;">
+
+Hayatımızın en güzel anılarından birine hazırlanırken, bu özel günü sizlerle paylaşacak olmanın heyecanını yaşıyoruz.
+
+<br><br>
+
+Katılım durumunuzu ve bizimle birlikte olacak kişi sayısını bildirmeniz, sizleri en güzel şekilde ağırlayabilmemiz için bizlere yardımcı olacaktır.
+
+<br><br>
+
+Bu anlamlı günümüzde yanımızda olmanız, mutluluğumuzu daha da güzelleştirecek.
+
+<br><br>
+
+<strong>Sevgiyle,</strong><br><br><strong>Gizem &amp; Fatih</strong>
+
+</p>
+
+<div style="max-width:600px;margin:40px auto;text-align:center;background:rgba(255,255,255,.88);padding:30px;border-radius:24px;">
+
+<label><input type="radio" name="rsvp" onclick="document.getElementById('kisi').style.display='block'"> Katılıyorum ❤️</label>
+
+&nbsp;&nbsp;&nbsp;
+
+<label><input type="radio" name="rsvp" onclick="document.getElementById('kisi').style.display='none'"> Katılamıyorum</label>
+
+<div id="kisi" style="display:none;margin-top:20px;">
+
+<p><strong>Kaç kişi katılacaksınız?</strong></p>
+
+<select style="padding:10px 15px;border-radius:12px;">
+<option>1 Kişi</option>
+<option>2 Kişi</option>
+<option>3 Kişi</option>
+<option>4 Kişi</option>
+<option>5+ Kişi</option>
+</select>
+
 </div>
 
 </div>
@@ -542,6 +586,7 @@ Kapanış
 <div class="container">
 
 <h2>Hikayemiz</h2>
+
 
 <p class="story">
 
