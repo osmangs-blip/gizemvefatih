@@ -911,6 +911,22 @@ rsvpBtn.style.cursor = "not-allowed";
 document.getElementById("sonuc").innerHTML =
 "❤️ Katılımınız alınmıştır. Teşekkür ederiz.";
 
+setTimeout(()=>{
+
+rsvpGonderiliyor = false;
+
+if(rsvpBtn){
+
+rsvpBtn.disabled = false;
+
+rsvpBtn.style.opacity = "1";
+
+rsvpBtn.style.cursor = "pointer";
+
+}
+
+}, 10000);
+
 try{
 
 await fetch(
