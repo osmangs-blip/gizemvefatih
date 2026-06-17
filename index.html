@@ -10,6 +10,23 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Cinzel:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
+.rsvp-options{
+display:flex;
+justify-content:center;
+gap:30px;
+margin-bottom:15px;
+}
+
+@media(max-width:768px){
+
+.rsvp-options{
+flex-direction:column;
+align-items:flex-start;
+gap:12px;
+}
+
+}
+  
 <style>
 
 *{
@@ -555,25 +572,57 @@ Bu anlamlı günümüzde yanımızda olmanız, mutluluğumuzu daha da güzelleş
 
 <div style="max-width:600px;margin:40px auto;text-align:center;background:rgba(255,255,255,.88);padding:30px;border-radius:24px;">
 
-<div style="max-width:420px;margin:20px auto;text-align:center;">
+<input
+id="adsoyad"
+type="text"
+placeholder="Ad Soyad"
+style="width:100%;max-width:420px;padding:12px;border:1px solid #ddd;border-radius:12px;margin-bottom:20px;">
 
-<button
-onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfUAySvWHXGrfyRnjSIyqZgSyBnHSDEqRvld01VTlcCCCRL9A/viewform','_blank')"
-style="
-background:#c8a35d;
-color:white;
-border:none;
-padding:14px 34px;
-border-radius:40px;
-cursor:pointer;
-font-weight:600;
-font-size:1rem;
-box-shadow:0 10px 25px rgba(0,0,0,.12);
-">
-❤️ Katılımı Bildir
-</button>
+<div class="rsvp-options">
+
+<label>
+<input type="radio" name="katilim" value="Katılıyorum"
+onclick="document.getElementById('kisiWrap').style.display='block'">
+Katılıyorum ❤️
+</label>
+
+<label>
+<input type="radio" name="katilim" value="Katılamıyorum"
+onclick="document.getElementById('kisiWrap').style.display='none'">
+Katılamıyorum
+</label>
 
 </div>
+
+<div id="kisiWrap" style="display:none;margin-top:20px;">
+
+<p><strong>Kaç kişi katılacaksınız?</strong></p>
+
+<select id="kisi" style="padding:10px 15px;border-radius:12px;">
+
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+<option>6</option>
+<option>7+</option>
+
+</select>
+
+</div>
+
+<br>
+
+<button
+onclick="gonderRSVP()"
+style="background:#c8a35d;color:white;border:none;padding:14px 34px;border-radius:40px;cursor:pointer;font-weight:600;">
+
+❤️ Katılımı Gönder
+
+</button>
+
+<div id="sonuc" style="margin-top:20px;font-weight:600;color:#2d6a4f;"></div>
 
 </div>
 
@@ -652,6 +701,50 @@ Sizinle birlikte kutlamak için sabırsızlanıyoruz..
 
 </div>
 
+async function gonderRSVP(){
+
+const adsoyad =
+document.getElementById("adsoyad").value.trim();
+
+const katilim =
+document.querySelector('input[name="katilim"]:checked')?.value;
+
+const kisi =
+document.getElementById("kisi").value;
+
+if(!adsoyad || !katilim){
+
+alert("Lütfen bilgileri doldurun.");
+
+return;
+
+}
+
+try{
+
+await fetch(
+"https://script.google.com/macros/s/AKfycbz9n5J3VHDKGGtfhM4iBOn8r3Ah2JmN7ag6JDaRJbm2pmTgqPlGdZiEQ1X90ZrwRVZ0WA/exec",
+{
+method:"POST",
+body:JSON.stringify({
+adsoyad,
+katilim,
+kisi
+})
+}
+);
+
+document.getElementById("sonuc").innerHTML =
+"❤️ Katılımınız alınmıştır. Teşekkür ederiz.";
+
+}catch(e){
+
+alert("Gönderim sırasında hata oluştu.");
+
+}
+
+}
+  
 <script>
 
 const targetDate = new Date("2026-08-01T19:30:00");
