@@ -231,18 +231,26 @@ color:#2d2118;
 .timeline{
 display:grid;
 grid-template-columns:repeat(6,1fr);
-gap:20px;
+gap:24px;
 }
 
 .event{
 background:rgba(255,255,255,.88);
 backdrop-filter:blur(12px);
-padding:30px;
+padding:30px 25px;
 border-radius:24px;
 text-align:center;
 border:1px solid rgba(200,163,93,.18);
 box-shadow:0 15px 35px rgba(0,0,0,.08);
 transition:.3s;
+
+min-width:180px;
+min-height:160px;
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 }
 
 .event:hover{
