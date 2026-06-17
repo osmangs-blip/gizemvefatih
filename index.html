@@ -216,6 +216,10 @@ max-width:1100px;
 margin:auto;
 }
 
+.container.timeline-wide{
+max-width:1400px;
+}
+
 h2{
 font-family:'Cinzel', serif;
 font-size:3.7rem;
@@ -230,31 +234,56 @@ color:#2d2118;
 
 .timeline{
 display:grid;
-grid-template-columns:repeat(6,1fr);
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
 gap:24px;
 }
 
 .event{
 background:rgba(255,255,255,.88);
 backdrop-filter:blur(12px);
-padding:30px 25px;
+padding:30px;
 border-radius:24px;
 text-align:center;
 border:1px solid rgba(200,163,93,.18);
 box-shadow:0 15px 35px rgba(0,0,0,.08);
 transition:.3s;
-
-min-width:180px;
-min-height:160px;
-
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
 }
 
 .event:hover{
 transform:translateY(-5px);
+}
+
+.ornament{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+color:#c8a35d;
+}
+
+.ornament .dash{
+height:1px;
+width:60px;
+background:#c8a35d;
+}
+
+.ornament .diamond{
+font-size:1rem;
+line-height:1;
+}
+
+.ornament.title{
+margin:-35px auto 40px;
+}
+
+.ornament.small{
+gap:6px;
+margin:8px 0 10px;
+font-size:.7rem;
+}
+
+.ornament.small .dash{
+width:22px;
 }
 
 .time{
@@ -360,7 +389,15 @@ grid-template-columns:repeat(2,1fr);
 }
 
 .timeline{
-grid-template-columns:repeat(2,1fr);
+grid-template-columns:1fr 1fr;
+gap:18px;
+max-width:420px;
+margin:0 auto;
+}
+
+.event{
+width:100%;
+min-width:0;
 }
 
 .footer h2{
@@ -532,18 +569,20 @@ Konumu Gör
 
 <section>
 
-<div class="container">
+<div class="container timeline-wide">
 
 <h2>Düğün Programı</h2>
 
+<div class="ornament title"><span class="dash"></span><span class="diamond">✦</span><span class="dash"></span></div>
+
 <div class="timeline">
 
-<div class="event"><div class="time">19:00</div>Misafir Karşılama</div>
-<div class="event"><div class="time">20:00</div>Nikâh - Fotoğraf Çekimi</div>
-<div class="event"><div class="time">20:30</div>İlk Dans</div>
-<div class="event"><div class="time">21:30</div>Düğün Pastası</div>
-<div class="event"><div class="time">22:00</div>Takı Töreni</div>
-<div class="event"><div class="time">23:00</div>Kına Merasimi</div>
+<div class="event"><div class="time">19:00</div><div class="ornament small"><span class="dash"></span><span class="diamond">✦</span><span class="dash"></span></div>Misafir Karşılama</div>
+<div class="event"><div class="time">20:00</div><div class="ornament small"><span class="dash"></span><span class="diamond">✦</span><span class="dash"></span></div>Nikâh - Fotoğraf Çekimi</div>
+<div class="event"><div class="time">20:30</div><div class="ornament small"><span class="dash"></span><span class="diamond">✦</span><span class="dash"></span></div>İlk Dans</div>
+<div class="event"><div class="time">21:30</div><div class="ornament small"><span class="dash"></span><span class="diamond">✦</span><span class="dash"></span></div>Düğün Pastası</div>
+<div class="event"><div class="time">22:00</div><div class="ornament small"><span class="dash"></span><span class="diamond">✦</span><span class="dash"></span></div>Takı Töreni</div>
+<div class="event"><div class="time">23:00</div><div class="ornament small"><span class="dash"></span><span class="diamond">✦</span><span class="dash"></span></div>Kına Merasimi</div>
 
 </div>
 
@@ -636,7 +675,7 @@ style="background:#c8a35d;color:white;border:none;padding:14px 34px;border-radiu
 
 <div class="container">
 
-<h2>Hikâyemiz</h2>
+<h2>Hikayemiz</h2>
 
 
 <p class="story">
