@@ -869,6 +869,54 @@ viewBtn.innerText="🖥️ Masaüstü";
 }
 });
 
+async function gonderRSVP(){
+
+const adsoyad =
+document.getElementById("adsoyad").value.trim();
+
+const katilim =
+document.querySelector('input[name="katilim"]:checked')?.value;
+
+const kisi =
+document.getElementById("kisi").value;
+
+if(!adsoyad || !katilim){
+
+alert("Lütfen tüm bilgileri doldurun.");
+
+return;
+
+}
+
+try{
+
+await fetch(
+"https://script.google.com/macros/s/AKfycbz9n5J3VHDKGGtfhM4iBOn8r3Ah2JmN7ag6JDaRJbm2pmTgqPlGdZiEQ1X90ZrwRVZ0WA/exec",
+{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+adsoyad,
+katilim,
+kisi
+})
+}
+);
+
+document.getElementById("sonuc").innerHTML =
+"❤️ Katılımınız alınmıştır. Teşekkür ederiz.";
+
+}catch(error){
+
+console.error(error);
+
+alert("Gönderim sırasında hata oluştu.");
+
+}
+
+}  
 </script>
 
 </body>
